@@ -8,9 +8,12 @@ app.use(morgan('combine'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/status', (req, res) => {
+/* register end point which takes a post request and will return a message with an email that was
+* provided in the payload
+*/
+app.post('/register', (req, res) => {
   res.send({
-    message: 'Hello World!'
+    message: `Hello ${req.body.email}! Your user was registered! Have fun!`
   })
 })
 app.listen(process.env.PORT || 8081)
